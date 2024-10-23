@@ -1,6 +1,6 @@
 # China Car Owners NationWide Data Cleaning and Processing Functions
 
-This repository contains a set of Python functions designed to clean and process data, primarily within a Google Colab environment. These functions are built to handle common data quality issues such as invalid emails, alphanumeric validation, duplicate removal, and data standardization.
+This repository contains a set of Python functions designed to clean and process data, a Jupyter file is included (created using the Google Colab environment) as well as Python scripts. These functions are built to handle common data quality issues such as invalid emails, alphanumeric validation, duplicate removal, and data standardization.
 
 ## Functions
 
@@ -38,17 +38,6 @@ This repository contains a set of Python functions designed to clean and process
 **How it Works:**
 1. Reads the input CSV file in chunks using `pd.read_csv` with the `chunksize` parameter.
 2. Iterates through each chunk and saves it to a separate CSV file in the specified output directory.
-
-### `process_chunked_csvs_output_folders`
-
-**Description:** Processes chunked CSV files from a specified folder, runs validation functions, and outputs the cleaned chunks in specified folders.
-
-**How it Works:**
-1. Iterates through each CSV file in the input folder.
-2. Reads the CSV file into a pandas DataFrame.
-3. Applies data cleaning and validation functions to the DataFrame.
-4. Saves the cleaned chunk to the output valid folder.
-5. Saves any error data to the output error folder.
 
 ### `validate_alphanumeric_columns`
 
@@ -96,4 +85,53 @@ This repository contains a set of Python functions designed to clean and process
 
 **Description:** Combines multiple columns into a single column in a DataFrame.
 
-**
+**How it Works:**
+Uses the pandas apply method to combine the values from the specified columns into a new column.
+The values are joined using the provided separator (default is a space).
+Drops the original columns that were combined.   
+
+### `process_chunked_csvs_output_folders`
+
+**Description:** Processes chunked CSV files from a specified folder, runs validation functions, and outputs the cleaned chunks in specified folders.
+
+**How it Works:**
+1. Iterates through each CSV file in the input folder.
+2. Reads the CSV file into a pandas DataFrame.
+3. Applies data cleaning and validation functions to the DataFrame.
+4. Saves the cleaned chunk to the output valid folder.
+5. Saves any error data to the output error folder.
+
+### `process_chunked_csvs`
+
+**Description:** Processes chunked CSV files from a specified folder, runs validation functions, and merges the results into final valid and error CSV files.
+
+**How it Works:**
+Iterates through each CSV file in the input folder.
+Reads the CSV file into a pandas DataFrame using pd.read_csv.
+Applies data validation and cleaning functions (like `validate_email_dataframe`, `combine_columns`) to the DataFrame.
+Appends the cleaned data to a `valid_df` and error data to an `error_df`.
+After processing all chunks, saves the `valid_df` and `error_df` to the specified output CSV files.
+
+### `combine_csv_chunks`
+
+**Description:** Combines multiple CSV chunks from a folder into a single CSV file.
+
+**How it Works:**
+Iterates through each CSV file in the input folder.
+Reads the CSV file into a pandas DataFrame using pd.read_csv.
+Appends the DataFrame to a `combined_df`.
+After processing all chunks, saves the `combined_df` to the specified output CSV file.
+
+This pipeline is designed to ensure data quality and consistency by identifying and handling duplicates, validating email addresses, removing irrelevant columns, and addressing other data inconsistencies. The modular nature of the functions allows for easy adaptation and extension to suit different data processing needs. 
+
+## Error Checking and Logging
+
+The pipeline adopts a proactive approach by anticipating potential issues and implementing measures to handle them gracefully. The use of error checking and logging ensures that the pipeline remains reliable and provides valuable insights into its execution.
+
+**Graceful Handling of Errors**: The pipeline can continue running even if some errors occur, preventing complete disruption.
+
+**Easy Debugging**: Log files offer a detailed record of events, making it easier to identify and fix issues.
+
+**Improved Maintainability**: The code becomes more robust and maintainable due to the structured error handling and logging.
+
+**Monitoring and Auditing**: Log files can be used for monitoring the pipeline's performance and auditing its operations.
