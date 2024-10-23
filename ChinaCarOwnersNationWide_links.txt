@@ -1,2 +1,2 @@
-Cleaned Dataset - https://cynatglobal.sharepoint.com/:f:/s/AIAnalyst/EuhIxoZ-OPBBsqRWQ1qFjvoBgtHK_xOxIvpqeEp-J_xMLw?e=PbQS6N
-Garbage Dataset - https://cynatglobal.sharepoint.com/:x:/s/AIAnalyst/EXPIvBFn-KFPsLX4V8bFwsIBqG2oOOiC_WyhLO2CfxuDbQ?e=njVe9s
+Links to the CSVs (Cleaned and Garbage Datasets) - https://cynatglobal.sharepoint.com/:f:/s/AIAnalyst/EuhIxoZ-OPBBsqRWQ1qFjvoBgtHK_xOxIvpqeEp-J_xMLw?e=PbQS6N
+
